@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Find a Phone</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape new data</a></p>
+    </div>
+
+    <!-- Phone Listings -->
+    <div class="row" id="craiglist-listings">
+        
+        <div class="col-md-12">
+            <h1>Latest Mars News</h1>
+        <h4 class="heading">{{mars_db.News_Title}}</h4>
+        <small>{{mars_db.News_Paragraph}}</small>
+      </div>
+    </div>
+    <div class="row" id="craiglist-listings">
+        <div class="col-md-8">
+            <h1>Featured Mars Image</h1>
+            <img
+            src="{{mars_db.Image | default('static/images/error.png', true) }}"
+            class="img-responsive"
+            alt="Responsive image"
+          />
+        </div>
+        <div class="col-md-4">
+            <h3>Mars Facts</h3>
+            <div class="table-responsive">
+              <div class="table table-striped">
+                {{ mars_db.Mars_facts|safe}}
+                <br/><br/><br/><br/><br/><br/>
+            
+
+          </div>
+        </div>
+      </div>
+      
+      <h1 style="padding-top:30px; padding-bottom: 30px; text-align: center">
+        Mars Hemispheres</h1>
+  </div>
+</div>
+
+      </div>
+      {% for h in mars_db.hemispheres %}
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="row"></div>
+            <img
+            src="{{h.img_url | default('static/images/error.png', true) }}" 
+            class="img-responsive"
+            alt="Responsive image"
+          />
+          
+          <h4>{{h.title}}</h4>
+        </div>
+      </div>
+      {% endfor %}
+
+  </div>
+</body>
+
+</html>
+
